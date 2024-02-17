@@ -20,3 +20,4 @@ resource "azurerm_container_app_environment" "app_environment" {
   log_analytics_workspace_id = azurerm_log_analytics_workspace.analytics_workspace.id
   tags                       = local.tags
 }
+//comment

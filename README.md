@@ -3,7 +3,7 @@
 This project deploys platform azure infrastructure for compute resources for hungovercoder assets.
 
 * Azure container environment
-* Log analytics workspac
+* Log analytics workspace
 
 - [Platform.Azure.Compute](#platformazurecompute)
   - [Prerequisites](#prerequisites)
