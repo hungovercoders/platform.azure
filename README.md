@@ -1,8 +1,11 @@
-# Template.Azure.Terraform
+# Platform.Azure.Compute
 
-This is a template implementation of how you can deploy Azure infrastructure using Terraform. This repository is designed to be a starting point for your own infrastructure as code projects. You can either use this repo as a template if you want a clean cut-off or fork it to keep up to date with any changes at source.
+This project deploys platform azure infrastructure for compute resources for hungovercoder assets.
 
-- [Template.Azure.Terraform](#templateazureterraform)
+* Azure container environment
+* Log analytics workspace
+
+- [Platform.Azure.Compute](#platformazurecompute)
   - [Prerequisites](#prerequisites)
   - [Getting Started](#getting-started)
   - [Local Infrastructure Development in Gitpod](#local-infrastructure-development-in-gitpod)
