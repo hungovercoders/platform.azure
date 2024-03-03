@@ -12,6 +12,9 @@ on:
       ARM_REGION:
         required: true
         type: string
+      PLATFORM:
+        required: true
+        type: string
       ENVIRONMENT:
         required: true
         type: string
@@ -56,9 +59,9 @@ jobs:
   
         - name: 'Terraform Plan'
           run: |
-            sh ./tools_platform/infrastructure.sh
+            sh ./tools_platform/infrastructure.sh ${{ inputs.PLATFORM }} False
         
         - name: Terraform Apply
           if: ${{ github.ref == 'refs/heads/main' || (inputs.ENVIRONMENT != 'production' && inputs.ENVIRONMENT != 'production-plan') }}
           run: |
-            sh ./tools_platform/infrastructure.sh True
+            sh ./tools_platform/infrastructure.sh ${{ inputs.PLATFORM }} True

@@ -17,10 +17,14 @@ tasks:
       gp sync-await waitonazurecli
       sh ./tools_platform/infrastructure_state_storage.sh
       gp sync-done waitonnstate
-  - name: Terraform
+  - name: Domain Registration Platform
     command: |
       gp sync-await waitonnstate
-      sh ./tools_platform/infrastructure.sh
+      sh ./tools_platform/infrastructure.sh domainregistration False 
+  - name: Application Platform
+    command: |
+      gp sync-await waitonnstate
+      sh ./tools_platform/infrastructure.sh application False 
 
 vscode:
   extensions:

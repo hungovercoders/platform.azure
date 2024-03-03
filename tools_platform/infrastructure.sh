@@ -1,6 +1,13 @@
 set -e  # Exit immediately if a command exits with a non-zero status.
 
-apply=${1:-False}
+platform=${1:-application}
+if [ "$platform" = "application" ] || [ "$platform" = "domainregistration" ] || [ "$platform" = "analytics" ]; then
+  echo "Platform '$platform' exists"
+else
+  echo "Error: Platform '$platform' does not exist"
+  exit 1
+fi
+apply=${2:-False}
 echo "Apply: $apply"
 set -a
 . ./domain.env
@@ -34,7 +41,7 @@ echo "State Storage Account is $TF_BACKEND_STORAGE_ACCOUNT"
 echo "State Storage Account Container is $TF_BACKEND_CONTAINER"
 
 echo "MESSAGE: Changing to infrastructure directory..."
-cd  infrastructure
+cd  $platform
 
 echo "MESSAGE: Initalising terraform..."
 terraform init -backend-config="resource_group_name=$TF_BACKEND_RESOURCE_GROUP" -backend-config="storage_account_name=$TF_BACKEND_STORAGE_ACCOUNT" -backend-config="container_name=$TF_BACKEND_CONTAINER"
