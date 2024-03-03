@@ -17,7 +17,12 @@ resource "azurerm_resource_group" "domain_rg" {
   for_each = local.unique_domains
   location = var.region
   name     = "${local.environment_shortcode}-${each.value}data-rg-${var.unique_namespace}"
-  tags     = local.tags
+  tags = {
+    environment  = var.environment
+    organisation = var.organisation
+    team         = var.team
+    domain       = each.value
+  }
 }
 
 resource "azurerm_storage_account" "data_lake" {
@@ -30,7 +35,12 @@ resource "azurerm_storage_account" "data_lake" {
   account_replication_type = "LRS"
   account_kind             = "StorageV2"
   is_hns_enabled           = true
-  tags                     = local.tags
+  tags = {
+    environment  = var.environment
+    organisation = var.organisation
+    team         = var.team
+    domain       = each.value
+  }
 }
 
 resource "azurerm_key_vault" "kv" {
@@ -43,8 +53,12 @@ resource "azurerm_key_vault" "kv" {
   soft_delete_retention_days  = 7
   purge_protection_enabled    = false
   sku_name                    = "standard"
-  tags                        = local.tags
-
+  tags = {
+    environment  = var.environment
+    organisation = var.organisation
+    team         = var.team
+    domain       = each.value
+  }
 }
 
 resource "azurerm_eventhub" "example" {
@@ -55,7 +69,6 @@ resource "azurerm_eventhub" "example" {
   resource_group_name = azurerm_resource_group.rg.name       # Adjust accordingly
   partition_count     = each.value.partition_count
   message_retention   = each.value.message_retention
-
 }
 
 resource "azurerm_eventhub_consumer_group" "example" {
