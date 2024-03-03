@@ -8,6 +8,8 @@ on:
       - 'application/**'
       - 'tools_platform/**'
       - 'domain.env'
+      - '.github/workflows/infrastructure.yml'
+      - '.github/workflows/application.yml'
   pull_request:
     branches:
       - main
@@ -15,6 +17,8 @@ on:
       - 'application/**'
       - 'tools_platform/**'
       - 'domain.env'
+      - '.github/workflows/infrastructure.yml'
+      - '.github/workflows/application.yml'
   workflow_dispatch:
 
 jobs:

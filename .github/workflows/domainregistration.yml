@@ -8,6 +8,8 @@ on:
       - 'domainregistration/**'
       - 'tools_platform/**'
       - 'domain.env'
+      - '.github/workflows/infrastructure.yml'
+      - '.github/workflows/domainregistration.yml'
   pull_request:
     branches:
       - main
@@ -15,6 +17,8 @@ on:
       - 'domainregistration/**'
       - 'tools_platform/**'
       - 'domain.env'
+      - '.github/workflows/infrastructure.yml'
+      - '.github/workflows/domainregistration.yml'
   workflow_dispatch:
 
 jobs:
