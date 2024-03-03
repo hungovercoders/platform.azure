@@ -1,7 +1,7 @@
 set -e  # Exit immediately if a command exits with a non-zero status.
 
 platform=${1:-application}
-if [ "$platform" = "application" ] || [ "$platform" = "domainregistration" ] || [ "$platform" = "analytics" ]; then
+if [ "$platform" = "application" ] || [ "$platform" = "domainpublication" ] ||[ "$platform" = "domainregistration" ] || [ "$platform" = "analytics" ]; then
   echo "Platform '$platform' exists"
 else
   echo "Error: Platform '$platform' does not exist"
