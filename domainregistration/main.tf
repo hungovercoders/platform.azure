@@ -55,11 +55,12 @@ resource "azurerm_eventhub" "example" {
   resource_group_name = azurerm_resource_group.rg.name       # Adjust accordingly
   partition_count     = each.value.partition_count
   message_retention   = each.value.message_retention
+
 }
 
 resource "azurerm_eventhub_consumer_group" "example" {
-  for_each = { for cg in local.flattened_consumer_groups : "${cg.eventhub_name}-${cg.consumer_group}" => cg }
-
+  for_each            = { for cg in local.flattened_consumer_groups : "${cg.eventhub_name}-${cg.consumer_group}" => cg }
+  depends_on          = [azurerm_eventhub.example]
   name                = each.value.consumer_group
   eventhub_name       = each.value.eventhub_name
   namespace_name      = azurerm_eventhub_namespace.ehns.name # Adjust accordingly
