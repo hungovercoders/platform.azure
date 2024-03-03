@@ -25,6 +25,10 @@ tasks:
     command: |
       gp sync-await waitonnstate
       sh ./tools_platform/infrastructure.sh application False 
+  - name: Analytics Platform
+    command: |
+      gp sync-await waitonnstate
+      sh ./tools_platform/infrastructure.sh analytics False 
 
 vscode:
   extensions:

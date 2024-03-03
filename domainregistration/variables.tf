@@ -60,37 +60,39 @@ variable "eventhubs" {
   default = [
     {
       domain_name = "beer"
-      events = [
-        {
-          name              = "beer.cdc.brewery.v1",
-          partition_count   = 4,
-          message_retention = 4,
-          consumer_groups   = ["beer.analytics"]
-        },
-        {
-          name              = "beer.cdc.beer.v1",
-          partition_count   = 4,
-          message_retention = 4,
-          consumer_groups   = ["beer.analytics"]
-        }
-      ]
+      events      = []
+      # events = [
+      #   {
+      #     name              = "beer.cdc.brewery.v1",
+      #     partition_count   = 4,
+      #     message_retention = 4,
+      #     consumer_groups   = ["beer.analytics"]
+      #   },
+      #   {
+      #     name              = "beer.cdc.beer.v1",
+      #     partition_count   = 4,
+      #     message_retention = 4,
+      #     consumer_groups   = ["beer.analytics"]
+      #   }
+      # ]
     },
     {
       domain_name = "whiskey"
-      events = [
-        {
-          name              = "whiskey.cdc.distillery.v1",
-          partition_count   = 4,
-          message_retention = 4,
-          consumer_groups   = ["whiskey.analytics"]
-        },
-        {
-          name              = "whiskey.cdc.whiskey.v1",
-          partition_count   = 4,
-          message_retention = 4,
-          consumer_groups   = ["whiskey.analytics"]
-        }
-      ]
+      events      = []
+      # events = [
+      #   {
+      #     name              = "whiskey.cdc.distillery.v1",
+      #     partition_count   = 4,
+      #     message_retention = 4,
+      #     consumer_groups   = ["whiskey.analytics"]
+      #   },
+      #   {
+      #     name              = "whiskey.cdc.whiskey.v1",
+      #     partition_count   = 4,
+      #     message_retention = 4,
+      #     consumer_groups   = ["whiskey.analytics"]
+      #   }
+      # ]
     }
   ]
 }
