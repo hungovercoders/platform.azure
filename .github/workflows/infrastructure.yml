@@ -31,7 +31,7 @@ on:
 jobs:
 
     terraform:
-        name: 'Infrastructure'
+        name: Infrastructure
         runs-on: ubuntu-latest
         environment:  ${{ inputs.ENVIRONMENT }}
         env:
@@ -46,18 +46,18 @@ jobs:
         
         steps:
         - name: Checkout
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3
     
         - name: Setup Terraform
           uses: hashicorp/setup-terraform@v1
           with:
             terraform_version: 1.6.3
 
-        - name: 'Show Variables'
+        - name: Show Variables
           run: |
             sh ./tools_platform/environment_variables.sh
   
-        - name: 'Terraform Plan'
+        - name: Terraform Plan
           run: |
             sh ./tools_platform/infrastructure.sh ${{ inputs.PLATFORM }} False
         

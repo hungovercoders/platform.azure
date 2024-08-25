@@ -5,7 +5,7 @@ set -a
 set +a
 
 echo "MESSAGE: Environment variables are..."
-echo "Unique Namespace is $ORGANISATION" 
+echo "Unique Namespace is $UNIQUE_NAMESPACE"
 echo "Organisation is $ORGANISATION" 
 echo "Region is $ARM_REGION" 
 echo "Environment is $ENVIRONMENT" 

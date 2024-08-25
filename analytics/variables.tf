@@ -56,8 +56,6 @@ locals {
   region_shortcode                  = (var.region == "northeurope" ? "eun" : var.region == "westeurope" ? "euw" : "unk")
   environment_shortcode             = (var.environment == "learning" ? "lrn" : var.environment == "development" ? "dev" : var.environment == "production" ? "prd" : "unk")
   resource_group_name               = "${local.environment_shortcode}-${var.team_instance}-rg"
-  databricks_workspace_name         = "${local.environment_shortcode}-${var.team_instance}-dbw-${local.region_shortcode}-${var.unique_namespace}"
-  databricks_workspace_rg           = "databricks-rg-${local.resource_group_name}"
   databricks_premium_workspace_name = "${local.environment_shortcode}-${var.team_instance}-dbwp-${local.region_shortcode}-${var.unique_namespace}"
   databricks_premium_workspace_rg   = "databricks-premium-rg-${local.resource_group_name}"
   data_factory_name                 = "${local.environment_shortcode}-${var.team_instance}-adf-${local.region_shortcode}-${var.unique_namespace}"
