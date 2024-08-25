@@ -1,35 +1,39 @@
-name: 'domain_platform'
+name: application_platform
+
+permissions:
+  contents: read
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'domainregistration/**'
-      - 'tools_platform/**'
-      - 'domain.env'
-      - '.github/workflows/infrastructure.yml'
-      - '.github/workflows/domainregistration.yml'
+      - application_platform/**
+      - tools_platform/**
+      - domain.env
+      - .github/workflows/infrastructure.yml
+      - .github/workflows/application_platform.yml
   pull_request:
     branches:
       - main
     paths:
-      - 'domainregistration/**'
-      - 'tools_platform/**'
-      - 'domain.env'
-      - '.github/workflows/infrastructure.yml'
-      - '.github/workflows/domainregistration.yml'
+      - application_platform/**
+      - tools_platform/**
+      - domain.env
+      - .github/workflows/infrastructure.yml
+      - .github/workflows/application_platform.yml
   workflow_dispatch:
 
 jobs:
   development-infrastructure:
+    if: github.ref != 'refs/heads/main'
     uses: ./.github/workflows/infrastructure.yml
     with:
       UNIQUE_NAMESPACE: ${{ vars.UNIQUE_NAMESPACE }}
       ORGANISATION: ${{ vars.ORGANISATION }}
       ARM_REGION: ${{ vars.ARM_REGION }}
-      PLATFORM: "domainregistration"
-      ENVIRONMENT: "development"
+      PLATFORM: application_platform
+      ENVIRONMENT: development
     secrets:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
@@ -39,13 +43,12 @@ jobs:
   production-plan-infrastructure:
     if: github.ref != 'refs/heads/main'
     uses: ./.github/workflows/infrastructure.yml
-    needs: development-infrastructure
     with:
       UNIQUE_NAMESPACE: ${{ vars.UNIQUE_NAMESPACE }}
       ORGANISATION: ${{ vars.ORGANISATION }}
       ARM_REGION: ${{ vars.ARM_REGION }}
-      PLATFORM: "domainregistration"
-      ENVIRONMENT: "production-plan"
+      PLATFORM: application_platform
+      ENVIRONMENT: production-plan
     secrets:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
@@ -55,13 +58,12 @@ jobs:
   production-infrastructure:
     if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/infrastructure.yml
-    needs: development-infrastructure
     with:
       UNIQUE_NAMESPACE: ${{ vars.UNIQUE_NAMESPACE }}
       ORGANISATION: ${{ vars.ORGANISATION }}
       ARM_REGION: ${{ vars.ARM_REGION }}
-      PLATFORM: "domainregistration"
-      ENVIRONMENT: "production"
+      PLATFORM: application_platform
+      ENVIRONMENT: production
     secrets:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}

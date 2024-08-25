@@ -79,20 +79,20 @@ variable "eventhubs" {
     {
       domain_name = "whiskey"
       events      = []
-      # events = [
-      #   {
-      #     name              = "whiskey.cdc.distillery.v1",
-      #     partition_count   = 4,
-      #     message_retention = 4,
-      #     consumer_groups   = ["whiskey.analytics"]
-      #   },
-      #   {
-      #     name              = "whiskey.cdc.whiskey.v1",
-      #     partition_count   = 4,
-      #     message_retention = 4,
-      #     consumer_groups   = ["whiskey.analytics"]
-      #   }
-      # ]
+  #     events = [
+  #       {
+  #         name              = "whiskey.cdc.distillery.v1",
+  #         partition_count   = 4,
+  #         message_retention = 4,
+  #         consumer_groups   = ["whiskey.analytics"]
+  #       },
+  #       {
+  #         name              = "whiskey.cdc.whiskey.v1",
+  #         partition_count   = 4,
+  #         message_retention = 4,
+  #         consumer_groups   = ["whiskey.analytics"]
+  #       }
+  #     ]
     }
   ]
 }

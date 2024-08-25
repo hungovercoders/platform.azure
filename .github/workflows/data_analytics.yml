@@ -1,0 +1,71 @@
+name: data_analytics
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - data_analytics/**
+      - tools_platform/**
+      - domain.env
+      - .github/workflows/infrastructure.yml
+      - .github/workflows/data_analytics.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data_analytics/**
+      - tools_platform/**
+      - domain.env
+      - .github/workflows/infrastructure.yml
+      - .github/workflows/data_analytics.yml
+  workflow_dispatch:
+
+jobs:
+  development-infrastructure:
+    if: github.ref != 'refs/heads/main'
+    uses: ./.github/workflows/infrastructure.yml
+    with:
+      UNIQUE_NAMESPACE: ${{ vars.UNIQUE_NAMESPACE }}
+      ORGANISATION: ${{ vars.ORGANISATION }}
+      ARM_REGION: ${{ vars.ARM_REGION }}
+      PLATFORM: data_analytics
+      ENVIRONMENT: development
+    secrets:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+  production-plan-infrastructure:
+    if: github.ref != 'refs/heads/main'
+    uses: ./.github/workflows/infrastructure.yml
+    with:
+      UNIQUE_NAMESPACE: ${{ vars.UNIQUE_NAMESPACE }}
+      ORGANISATION: ${{ vars.ORGANISATION }}
+      ARM_REGION: ${{ vars.ARM_REGION }}
+      PLATFORM: data_analytics
+      ENVIRONMENT: production-plan
+    secrets:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+  production-infrastructure:
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/infrastructure.yml
+    with:
+      UNIQUE_NAMESPACE: ${{ vars.UNIQUE_NAMESPACE }}
+      ORGANISATION: ${{ vars.ORGANISATION }}
+      ARM_REGION: ${{ vars.ARM_REGION }}
+      PLATFORM: data_analytics
+      ENVIRONMENT: production
+    secrets:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}

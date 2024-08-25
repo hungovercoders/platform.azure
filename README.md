@@ -8,8 +8,11 @@ This project deploys platform azure infrastructure for compute resources for hun
 - [Platform.Azure.Compute](#platformazurecompute)
   - [Prerequisites](#prerequisites)
   - [Getting Started](#getting-started)
-  - [Local Infrastructure Development in Gitpod](#local-infrastructure-development-in-gitpod)
-  - [Deployment](#deployment)
+  - [Contribute](#contribute)
+    - [Application Platform](#application-platform)
+    - [Data Analytics](#data-analytics)
+    - [Data Catalog](#data-catalog)
+    - [Domain Registration](#domain-registration)
   - [Tools Platform](#tools-platform)
 
 ## Prerequisites
@@ -27,28 +30,31 @@ This project deploys platform azure infrastructure for compute resources for hun
    - Versions: Will show you the versions of the tools installed
    - Azure CLI: Will show you the installation of the Azure CLI
    - Azure Storage: Will show you whether the state resource group and storage is created
-   - Terraform: Will show you the current terraform plan against the development environment.
+   - Terraform {platform_type}: Will show you the current terraform plan against the development environment.
 
-## Local Infrastructure Development in Gitpod
+## Contribute
 
-1. Make changes in the infrastructure directory.
-2. Run the following bash commands to test your changes.
+This repo deploys distinct sets of infrastructure the hungovercoder assets. Please follow the README in each of the following sections to contribue to an appropriate part of the platform.
 
-```bash
-sh ./tools_platform/infrastructure.sh
-```
+### Application Platform
 
-3. If you wish to try deploying to development from your gitpod directory exactly as the pipeline would, run:
+- This infrastructure deploys neccessary application infrastructure for new software to be built upon.
+- [README](./data_analytics/README.md)
 
-```bash
-sh ./tools_platform/infrastructure.sh True
-```
+### Data Analytics
 
-## Deployment
+- This infrastructure deploys data factories and databricks workspaces for teams.
+- [README](./data_analytics/README.md)
 
-1. You can either manually trigger the github action associated with this repo, which will deploy to development and generate a plan against production.
-1. A pull request to main will trigger the github action associated with this repo, which will deploy to development and generate a plan against production.
-1. A completed pull request to main will trigger the github action associated with this repo, which will deploy to development and deploy to production.
+### Data Catalog
+
+- This infrastructure deploys databricks unity catalog.
+- [README](./data_catalog/README.md)
+
+### Domain Registration
+
+- This infrastructure deploys historical storage for each domain and the event hub namespace and event hubs for each domain event.
+- [README](./domain_registration/README.md)
 
 ## Tools Platform
 

@@ -1,3 +1,4 @@
+#!/bin/bash
 echo 'Getting git version...'
 git --version
 echo 'Getting terraform version...'

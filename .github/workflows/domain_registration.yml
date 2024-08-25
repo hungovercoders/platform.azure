@@ -1,4 +1,4 @@
-name: analytics_platform
+name: domain_registration
 
 permissions:
   contents: read
@@ -8,20 +8,20 @@ on:
     branches:
       - main
     paths:
-      - analytics/**
+      - domain_registration/**
       - tools_platform/**
       - domain.env
       - .github/workflows/infrastructure.yml
-      - .github/workflows/analytics.yml
+      - .github/workflows/domain_registration.yml
   pull_request:
     branches:
       - main
     paths:
-      - application/**
+      - domain_registration/**
       - tools_platform/**
       - domain.env
       - .github/workflows/infrastructure.yml
-      - .github/workflows/analytics.yml
+      - .github/workflows/domain_registration.yml
   workflow_dispatch:
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
       UNIQUE_NAMESPACE: ${{ vars.UNIQUE_NAMESPACE }}
       ORGANISATION: ${{ vars.ORGANISATION }}
       ARM_REGION: ${{ vars.ARM_REGION }}
-      PLATFORM: analytics
+      PLATFORM: domain_registration
       ENVIRONMENT: development
     secrets:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -43,11 +43,12 @@ jobs:
   production-plan-infrastructure:
     if: github.ref != 'refs/heads/main'
     uses: ./.github/workflows/infrastructure.yml
+    needs: development-infrastructure
     with:
       UNIQUE_NAMESPACE: ${{ vars.UNIQUE_NAMESPACE }}
       ORGANISATION: ${{ vars.ORGANISATION }}
       ARM_REGION: ${{ vars.ARM_REGION }}
-      PLATFORM: analytics
+      PLATFORM: domain_registration
       ENVIRONMENT: production-plan
     secrets:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -58,11 +59,12 @@ jobs:
   production-infrastructure:
     if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/infrastructure.yml
+    needs: development-infrastructure
     with:
       UNIQUE_NAMESPACE: ${{ vars.UNIQUE_NAMESPACE }}
       ORGANISATION: ${{ vars.ORGANISATION }}
       ARM_REGION: ${{ vars.ARM_REGION }}
-      PLATFORM: analytics
+      PLATFORM: domain_registration
       ENVIRONMENT: production
     secrets:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}

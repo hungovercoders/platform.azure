@@ -35,20 +35,20 @@ resource "azurerm_role_assignment" "access_assign" {
   principal_id         = azapi_resource.access_connector.identity[0].principal_id
 }
 
-resource "databricks_metastore" "metastore" {
-  name = local.databricks_metastore
-  storage_root = format("abfss://%s@%s.dfs.core.windows.net/",
-    azurerm_storage_data_lake_gen2_filesystem.metastore_container.name,
-  azurerm_storage_account.data_lake_catalog.name)
-  force_destroy = true
-}
+# resource "databricks_metastore" "metastore" {
+#   name = local.databricks_metastore
+#   storage_root = format("abfss://%s@%s.dfs.core.windows.net/",
+#     azurerm_storage_data_lake_gen2_filesystem.metastore_container.name,
+#   azurerm_storage_account.data_lake_catalog.name)
+#   force_destroy = true
+# }
 
-resource "databricks_metastore_data_access" "metastore_data_access" {
-  depends_on   = [databricks_metastore.metastore]
-  metastore_id = databricks_metastore.metastore.id
-  name         = "access"
-  azure_managed_identity {
-    access_connector_id = azapi_resource.access_connector.id
-  }
-  is_default = true
-}
+# resource "databricks_metastore_data_access" "metastore_data_access" {
+#   depends_on   = [databricks_metastore.metastore]
+#   metastore_id = databricks_metastore.metastore.id
+#   name         = "access"
+#   azure_managed_identity {
+#     access_connector_id = azapi_resource.access_connector.id
+#   }
+#   is_default = true
+# }
