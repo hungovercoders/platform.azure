@@ -1,8 +1,12 @@
-FROM gitpod/workspace-base
+# trunk-ignore-all(checkov/CKV_DOCKER_2)
+# trunk-ignore(checkov/CKV_DOCKER_7)
+# trunk-ignore(hadolint/DL3007)
+FROM gitpod/workspace-base:latest
 
 USER gitpod
 
 # Install Homebrew
+SHELL ["/bin/bash", "-o", "pipefail"]
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
 
@@ -13,5 +17,7 @@ RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && \
     brew install hashicorp/tap/terraform && \
     brew upgrade terraform && \
     brew install azure-cli  && \
-    brew install aztfexport && \
-    brew install trunk
+    brew install aztfexport
+
+SHELL ["/bin/bash", "-o", "pipefail"]
+RUN /bin/bash -c "$(curl https://get.trunk.io -fsSL | bash -s -- -y)"
