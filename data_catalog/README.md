@@ -8,6 +8,8 @@
     - [Fix - Extra User In Order to Access Catalog](#fix---extra-user-in-order-to-access-catalog)
     - [Creating Unity Catalog](#creating-unity-catalog)
     - [Adding Workspaces to Unity Catalog](#adding-workspaces-to-unity-catalog)
+    - [Create Metastore Admin Permissions](#create-metastore-admin-permissions)
+    - [Assign Main (default) Catalog Permissions](#assign-main-default-catalog-permissions)
 
 ## Purpose
 
@@ -62,3 +64,17 @@ TODO: - Want to automate
 Login in to [databricks account](https://accounts.azuredatabricks.net/) with the account above.
 
 ![Workspace Assign](workspace_assign.png)
+
+### Create Metastore Admin Permissions
+
+TODO: - Want to automate
+
+![Metastore Admins](metastore_admins.png)
+
+![Metastore Admins Assign](metastore_admins_assign.png)
+
+### Assign Main (default) Catalog Permissions
+
+TODO: - Want to automate
+
+![Catalog Permissions](catalog_permissions.png)
