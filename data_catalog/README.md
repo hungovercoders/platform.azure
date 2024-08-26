@@ -5,7 +5,7 @@
   - [Deployed Assets](#deployed-assets)
   - [Contribute](#contribute)
   - [Manual Steps](#manual-steps)
-    - [Fix - Extra User to Access Catalog](#fix---extra-user-to-access-catalog)
+    - [Fix - Extra User In Order to Access Catalog](#fix---extra-user-in-order-to-access-catalog)
     - [Creating Unity Catalog](#creating-unity-catalog)
     - [Adding Workspaces to Unity Catalog](#adding-workspaces-to-unity-catalog)
 
@@ -32,10 +32,33 @@ Please note the following:
 
 ## Manual Steps
 
-TODO
+### Fix - Extra User In Order to Access Catalog
 
-### Fix - Extra User to Access Catalog
+TODO - Want to automate
+
+Due to [this ongoing issue with azure databricks account level access](https://community.databricks.com/t5/administration-architecture/unable-to-login-to-azure-databricks-account-console/m-p/83658/highlight/true#M1613), highlighted and solved in git hub [here](https://github.com/cloudboxacademy/azure_databricks_course/blob/main/known-issues/unable-to-login-to-azure-databricks-account-console.md), have had to create an extra global admin user as per below.
+
+![Extra Account](./images/extra_account.png)
+
+![Extra Account Permissions](./images/extra_account_permissions.png)
+
+Login in to [databricks account](https://accounts.azuredatabricks.net/) with this account and perform the tasks below with this account.
+This is very strange behaviour from azure and databricks as my own account does have the same access.
 
 ### Creating Unity Catalog
 
+TODO - Want to automate
+
+Login in to [databricks account](https://accounts.azuredatabricks.net/) with the account above.
+
+![Metastore Create](./images/metastore_create.png)
+
+![Metastore Configure](./images/metastore_configure.png)
+
 ### Adding Workspaces to Unity Catalog
+
+TODO - Want to automate
+
+Login in to [databricks account](https://accounts.azuredatabricks.net/) with the account above.
+
+![Workspace Assign](workspace_assign.png)
