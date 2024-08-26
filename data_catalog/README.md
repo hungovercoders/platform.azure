@@ -4,8 +4,10 @@
   - [Purpose](#purpose)
   - [Deployed Assets](#deployed-assets)
   - [Contribute](#contribute)
-  - [Creating Unity Catalog](#creating-unity-catalog)
-  - [Adding Workspaces to Unity Catalog](#adding-workspaces-to-unity-catalog)
+  - [Manual Steps](#manual-steps)
+    - [Fix - Extra User to Access Catalog](#fix---extra-user-to-access-catalog)
+    - [Creating Unity Catalog](#creating-unity-catalog)
+    - [Adding Workspaces to Unity Catalog](#adding-workspaces-to-unity-catalog)
 
 ## Purpose
 
@@ -28,6 +30,12 @@ Please note the following:
 - Unity catalog is setup as per the manual process below.
 - Adding workspaces to unity catalog occurs as per the manual process below.
 
-## Creating Unity Catalog
+## Manual Steps
 
-## Adding Workspaces to Unity Catalog
+TODO
+
+### Fix - Extra User to Access Catalog
+
+### Creating Unity Catalog
+
+### Adding Workspaces to Unity Catalog

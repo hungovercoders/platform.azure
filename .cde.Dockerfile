@@ -6,7 +6,6 @@ FROM gitpod/workspace-base:latest
 USER gitpod
 
 # Install Homebrew
-SHELL ["/bin/bash", "-o", "pipefail"]
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
 
@@ -19,5 +18,4 @@ RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && \
     brew install azure-cli  && \
     brew install aztfexport
 
-SHELL ["/bin/bash", "-o", "pipefail"]
-RUN /bin/bash -c "$(curl https://get.trunk.io -fsSL | bash -s -- -y)"
+RUN curl https://get.trunk.io -fsSL | bash -s -- -y
