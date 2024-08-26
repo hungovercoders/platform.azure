@@ -18,6 +18,8 @@ This platform is used to deploy the data analytics infrastructure for hungoverco
 
 At this point for any new databricks workspaces you create you will need to manually add them to the unity catalog metastore as per [data_catalog](../data_catalog/README.md).
 
+TODO: Need to add databricks clusters per user with good config (e.g. unity catalog and time outs appropriate)
+
 ## Contribute
 
 You can contribute to the terraform in this data_analytics directory and then carry out the below.
