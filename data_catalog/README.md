@@ -34,7 +34,7 @@ Please note the following:
 
 ### Fix - Extra User In Order to Access Catalog
 
-TODO - Want to automate
+TODO: - Want to automate
 
 Due to [this ongoing issue with azure databricks account level access](https://community.databricks.com/t5/administration-architecture/unable-to-login-to-azure-databricks-account-console/m-p/83658/highlight/true#M1613), highlighted and solved in git hub [here](https://github.com/cloudboxacademy/azure_databricks_course/blob/main/known-issues/unable-to-login-to-azure-databricks-account-console.md), have had to create an extra global admin user as per below.
 
@@ -47,7 +47,7 @@ This is very strange behaviour from azure and databricks as my own account does 
 
 ### Creating Unity Catalog
 
-TODO - Want to automate
+TODO: - Want to automate
 
 Login in to [databricks account](https://accounts.azuredatabricks.net/) with the account above.
 
@@ -57,7 +57,7 @@ Login in to [databricks account](https://accounts.azuredatabricks.net/) with the
 
 ### Adding Workspaces to Unity Catalog
 
-TODO - Want to automate
+TODO: - Want to automate
 
 Login in to [databricks account](https://accounts.azuredatabricks.net/) with the account above.
 
