@@ -65,7 +65,7 @@ resource "databricks_external_location" "some" {
   name = "whiskey_interface"
   url = format("abfss://%s@%s.dfs.core.windows.net",
     "interface",
-  "abfss://prdwhiskeydlkeunhngc.dfs.core.windows.net")
+  "prdwhiskeydlkeunhngc")
   credential_name = azapi_resource.access_connector.identity[0].principal_id
   comment         = "Managed by TF"
   # depends_on = [
