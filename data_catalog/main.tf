@@ -78,7 +78,7 @@ resource "databricks_external_location" "whiskey_internal" {
   url = format("abfss://%s@%s.dfs.core.windows.net",
     "internal",
   "prdwhiskeydlkeunhngc")
-  credential_name = azapi_resource.access_connector.id
+  credential_name = "d4d11f42-1c94-464b-bdde-268cbbaaf5eb-storage-credential-1724660310970" //TODO: get this dynamically
   comment         = "Managed by TF"
   # depends_on = [
   #   databricks_metastore_assignment.this
