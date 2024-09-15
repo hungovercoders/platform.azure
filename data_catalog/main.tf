@@ -72,3 +72,13 @@ resource "databricks_external_location" "some" {
   #   databricks_metastore_assignment.this
   # ]
 }
+
+resource "databricks_schema" "internal" {
+  catalog_name = databricks_catalog.whiskey.id
+  name         = "internal"
+  comment      = "this schema is managed by terraform"
+  storage_root = "abfss://prdwhiskeydlkeunhngc.dfs.core.windows.net/internal"
+  properties = {
+    kind = "various"
+  }
+}
