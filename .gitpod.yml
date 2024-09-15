@@ -29,6 +29,10 @@ tasks:
     command: |
       gp sync-await wait_on_state
       sh ./tools_platform/infrastructure.sh data_analytics False
+  - name: Data Catalog
+    command: |
+      gp sync-await wait_on_state
+      sh ./tools_platform/infrastructure.sh data_catalog False
 
 vscode:
   extensions:

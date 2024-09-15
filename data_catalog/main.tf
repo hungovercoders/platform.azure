@@ -52,3 +52,11 @@ resource "azurerm_role_assignment" "access_assign" {
 #   }
 #   is_default = true
 # }
+
+resource "databricks_catalog" "whiskey" {
+  name    = "whiskey"
+  comment = "this catalog is managed by terraform"
+  properties = {
+    purpose = "Whiskey catalog"
+  }
+}
