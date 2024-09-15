@@ -67,3 +67,7 @@ In the [tools_platform](./tools_platform/azure.sh), you will find a number of sc
 - [Git Status](./tools_platform/git_status.sh): The current status of your git branches.
 - [Infrastructure State Storage](./tools_platform/infrastructure_state_storage.sh): Deploys the storage account in Azure to hold your infrastructure state.
 - [Infrastructure](./tools_platform/infrastructure.sh): Plans your infrastructure deploy or deploys it if the argument True is passed.
+
+## Authentication
+
+Currently using aprg-hungovercoders-dev-admin account globally. This includes databricks metastore actions. For more secure practices more isolation per platform area and environment should be used. TODO: 

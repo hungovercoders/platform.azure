@@ -9,6 +9,8 @@
     - [Creating Unity Catalog](#creating-unity-catalog)
     - [Adding Workspaces to Unity Catalog](#adding-workspaces-to-unity-catalog)
     - [Create Metastore Admin Permissions](#create-metastore-admin-permissions)
+    - [Add Myself](#add-myself)
+    - [Add My Deployment Service Account](#add-my-deployment-service-account)
     - [Assign Main (default) Catalog Permissions](#assign-main-default-catalog-permissions)
 
 ## Purpose
@@ -63,18 +65,26 @@ TODO: - Want to automate
 
 Login in to [databricks account](https://accounts.azuredatabricks.net/) with the account above.
 
-![Workspace Assign](workspace_assign.png)
+![Workspace Assign](./images/workspace_assign.png)
 
 ### Create Metastore Admin Permissions
 
 TODO: - Want to automate
 
-![Metastore Admins](metastore_admins.png)
+### Add Myself
 
-![Metastore Admins Assign](metastore_admins_assign.png)
+![Metastore Admins](./images/metastore_admins.png)
+
+![Metastore Admins Assign](./images/metastore_admins_assign.png)
+
+### Add My Deployment Service Account
+
+- aprg-hungovercoders-dev-admin (client id)
+
+![Metastore Service Account Admin](./images/metastore_service_account_admin.PNG)
 
 ### Assign Main (default) Catalog Permissions
 
 TODO: - Want to automate
 
-![Catalog Permissions](catalog_permissions.png)
+![Catalog Permissions](./images/catalog_permissions.png)
