@@ -27,6 +27,7 @@ provider "azurerm" {
 }
 
 provider "databricks" {
+  host = "https://adb-71195058626629.9.azuredatabricks.net"
 }
 
 data "azurerm_client_config" "current" {}
