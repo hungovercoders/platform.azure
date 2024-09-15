@@ -61,12 +61,24 @@ resource "databricks_catalog" "whiskey" {
   }
 }
 
-resource "databricks_external_location" "some" {
+resource "databricks_external_location" "whiskey_interface" {
   name = "whiskey_interface"
   url = format("abfss://%s@%s.dfs.core.windows.net",
     "interface",
   "prdwhiskeydlkeunhngc")
-  credential_name = azapi_resource.access_connector.identity[0].principal_id
+  credential_name = azapi_resource.access_connector.id
+  comment         = "Managed by TF"
+  # depends_on = [
+  #   databricks_metastore_assignment.this
+  # ]
+}
+
+resource "databricks_external_location" "whiskey_internal" {
+  name = "whiskey_internal"
+  url = format("abfss://%s@%s.dfs.core.windows.net",
+    "internal",
+  "prdwhiskeydlkeunhngc")
+  credential_name = azapi_resource.access_connector.id
   comment         = "Managed by TF"
   # depends_on = [
   #   databricks_metastore_assignment.this
@@ -77,8 +89,11 @@ resource "databricks_schema" "internal" {
   catalog_name = databricks_catalog.whiskey.id
   name         = "internal"
   comment      = "this schema is managed by terraform"
-  storage_root = "abfss://prdwhiskeydlkeunhngc.dfs.core.windows.net/internal"
+  storage_root = "abfss://internal@prdwhiskeydlkeunhngc.dfs.core.windows.net"
   properties = {
     kind = "various"
   }
+  depends_on = [
+    databricks_external_location.whiskey_internal
+  ]
 }
