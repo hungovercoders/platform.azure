@@ -12,6 +12,7 @@
     - [Add Myself](#add-myself)
     - [Add My Deployment Service Account](#add-my-deployment-service-account)
     - [Assign Main (default) Catalog Permissions](#assign-main-default-catalog-permissions)
+    - [Deployment Account All Permissions on Databricks Connector Storage Credentials](#deployment-account-all-permissions-on-databricks-connector-storage-credentials)
 
 ## Purpose
 
@@ -88,3 +89,9 @@ TODO: - Want to automate
 TODO: - Want to automate
 
 ![Catalog Permissions](./images/catalog_permissions.png)
+
+### Deployment Account All Permissions on Databricks Connector Storage Credentials
+
+TODO: - Want to automate
+
+![Permissions on Storage Credentials](./images/storage_credentials_grant_deploy_account.PNG)

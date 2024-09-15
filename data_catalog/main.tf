@@ -53,6 +53,9 @@ resource "azurerm_role_assignment" "access_assign" {
 #   is_default = true
 # }
 
+//TODO: All the following should be taken from looped domain list
+
+//TODO: Grant permissions on this here
 resource "databricks_catalog" "whiskey" {
   name    = "whiskey"
   comment = "this catalog is managed by terraform"
@@ -61,6 +64,7 @@ resource "databricks_catalog" "whiskey" {
   }
 }
 
+//TODO: Grant permissions on this here
 resource "databricks_external_location" "whiskey_interface" {
   name = "whiskey_interface"
   url = format("abfss://%s@%s.dfs.core.windows.net",
@@ -73,6 +77,7 @@ resource "databricks_external_location" "whiskey_interface" {
   # ]
 }
 
+//TODO: Grant permissions on this here
 resource "databricks_external_location" "whiskey_internal" {
   name = "whiskey_internal"
   url = format("abfss://%s@%s.dfs.core.windows.net",
@@ -85,6 +90,7 @@ resource "databricks_external_location" "whiskey_internal" {
   # ]
 }
 
+//TODO: Grant permissions on this here - will this inherit from the catalog?
 resource "databricks_schema" "internal" {
   catalog_name = databricks_catalog.whiskey.id
   name         = "internal"
