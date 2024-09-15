@@ -26,4 +26,9 @@ provider "azurerm" {
   features {}
 }
 
+provider "databricks" {
+}
+
 data "azurerm_client_config" "current" {}
+
+data "databricks_current_user" "me" {}
