@@ -102,6 +102,7 @@ locals {
   environment_shortcode   = (var.environment == "learning" ? "lrn" : var.environment == "development" ? "dev" : var.environment == "production" ? "prd" : "unk")
   resource_group_name     = "${local.environment_shortcode}-events001-rg-${var.unique_namespace}"
   eventhub_namespace_name = "${local.environment_shortcode}-events001-ehns-${local.region_shortcode}-${var.unique_namespace}"
+  containers              = toset(["source", "internal", "interface"])
 
   tags = {
     environment  = var.environment
@@ -111,6 +112,18 @@ locals {
   }
 
   unique_domains = { for eh in var.eventhubs : eh.domain_name => eh.domain_name }
+
+  flattened_containers = flatten([
+    for domain in var.eventhubs : [
+      for event in domain.events : [
+        for container in local.containers : {
+          domain_name    = domain.domain_name
+          storage_name   = "${local.environment_shortcode}${domain.domain_name}dlk${local.region_shortcode}${var.unique_namespace}"
+          container_name = container
+        }
+      ]
+    ]
+  ])
 
   flattened_eventhubs = flatten([
     for domain in var.eventhubs : [

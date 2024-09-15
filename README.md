@@ -2,17 +2,17 @@
 
 This project deploys platform azure infrastructure for compute resources for hungovercoder assets.
 
-* Azure container environment
-* Log analytics workspace
+- Azure container environment
+- Log analytics workspace
 
 - [Platform.Azure.Compute](#platformazurecompute)
   - [Prerequisites](#prerequisites)
   - [Getting Started](#getting-started)
   - [Contribute](#contribute)
+    - [Domain Registration](#domain-registration)
     - [Application Platform](#application-platform)
     - [Data Analytics](#data-analytics)
     - [Data Catalog](#data-catalog)
-    - [Domain Registration](#domain-registration)
   - [Tools Platform](#tools-platform)
 
 ## Prerequisites
@@ -34,7 +34,12 @@ This project deploys platform azure infrastructure for compute resources for hun
 
 ## Contribute
 
-This repo deploys distinct sets of infrastructure the hungovercoder assets. Please follow the README in each of the following sections to contribue to an appropriate part of the platform.
+This repo deploys distinct sets of infrastructure the hungovercoder assets. Please follow the README in each of the following sections to contribute to an appropriate part of the platform.
+
+### Domain Registration
+
+- This infrastructure deploys historical storage for each domain and the event hub namespace and event hubs for each domain event.
+- [README](./domain_registration/README.md)
 
 ### Application Platform
 
@@ -50,11 +55,6 @@ This repo deploys distinct sets of infrastructure the hungovercoder assets. Plea
 
 - This infrastructure deploys databricks unity catalog.
 - [README](./data_catalog/README.md)
-
-### Domain Registration
-
-- This infrastructure deploys historical storage for each domain and the event hub namespace and event hubs for each domain event.
-- [README](./domain_registration/README.md)
 
 ## Tools Platform
 

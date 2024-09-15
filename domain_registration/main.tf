@@ -43,6 +43,14 @@ resource "azurerm_storage_account" "data_lake" {
   }
 }
 
+resource "azurerm_storage_container" "example" {
+  for_each              = { for container in local.flattened_containers : "${container.storage_name}-${container.container_name}" => container }
+  depends_on            = [azurerm_storage_account.data_lake]
+  name                  = each.value.container_name
+  storage_account_name  = each.value.storage_account_name
+  container_access_type = "private"
+}
+
 resource "azurerm_key_vault" "kv" {
   for_each                    = local.unique_domains
   name                        = "${local.environment_shortcode}${each.value}kv${local.region_shortcode}${var.unique_namespace}"
