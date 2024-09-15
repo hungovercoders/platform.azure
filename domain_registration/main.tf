@@ -43,6 +43,14 @@ resource "azurerm_storage_account" "data_lake" {
   }
 }
 
+resource "azurerm_role_assignment" "access_assign" {
+  for_each             = local.unique_domains
+  depends_on           = [azurerm_storage_account.data_lake]
+  scope                = azurerm_storage_account.data_lake[each.value].id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = "452f1e80-b6f7-4da9-95a1-cf2f505a9a76" //prd-catalog001-dbexc-eun-hngc
+}
+
 resource "azurerm_storage_container" "example" {
   for_each              = { for container in local.flattened_containers : "${container.storage_account_name}-${container.container_name}" => container }
   depends_on            = [azurerm_storage_account.data_lake]
@@ -50,20 +58,6 @@ resource "azurerm_storage_container" "example" {
   storage_account_name  = each.value.storage_account_name
   container_access_type = "private"
 }
-
-resource "databricks_external_location" "some" {
-  name = "external"
-  url = format("abfss://%s@%s.dfs.core.windows.net",
-    azurerm_storage_container.ext_storage.name,
-  azurerm_storage_account.ext_storage.name)
-  credential_name = databricks_storage_credential.external.id
-  comment         = "Managed by TF"
-  depends_on = [
-    databricks_metastore_assignment.this
-  ]
-}
-
-
 
 resource "azurerm_key_vault" "kv" {
   for_each                    = local.unique_domains
